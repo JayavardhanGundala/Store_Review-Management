@@ -3,11 +3,14 @@ import * as cors from "cors"
 import dotenv  from "dotenv"
 import {db} from "./confi/db.js"
 import {schema} from "./schema/Schema.js"
+import router from "./routes/routes.js"
 dotenv.config()
 
 const app=express()
 app.use(express.json());
 app.use(cors.default()); 
+app.use(express.urlencoded({ extended: true }));
+
 
 (async()=>{
     try{
@@ -19,9 +22,7 @@ app.use(cors.default());
 
     }
 })();
-app.get("/",(req,res)=>{
-    res.json("server running")
-})
+app.use(router)
 
 
 app.listen(process.env.PORT,()=>{
