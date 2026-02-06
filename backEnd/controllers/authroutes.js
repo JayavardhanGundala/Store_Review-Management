@@ -2,16 +2,25 @@ import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
 import {db} from "../confi/db.js"
 
-export const register=async(req,res)=>{
-    const {name,email,address,password}=req.body
-    const hashed=await bcrypt.hash(password,10)
-    await db.query(
-        "INSERT INTO users(name,email,address,password,role) VALUES(?,?,?,?,?)",
-        [name,email,address,hashed,"User"]
+export const register = async (req, res) => {
+  try {
+    const { name, email, address, password } = req.body;
+    const hashed = await bcrypt.hash(password, 10);
+    const [result] = await db.query(
+      "INSERT INTO users(name,email,address,password,role) VALUES(?,?,?,?,?)",
+      [name, email, address, hashed, "User"]
     );
-    return res.status(201).json({message:"User craeted"})
+    const token = jwt.sign(
+      { id: result.insertId, role: "User" },
+      process.env.JWT_SECRET,
+      { expiresIn: "1d" }
+    );
+    return res.status(200).json({ token, role: "User" });
+  } catch (err) {
+    return res.status(400).json({ message: `${err}` });
+  }
+};
 
-}
 export const login=async(req,res)=>{
    try{
      const {email,password}=req.body
