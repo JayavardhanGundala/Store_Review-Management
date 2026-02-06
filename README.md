@@ -3,6 +3,35 @@
 This is a **web application** where users can submit ratings for stores registered on the platform. Ratings range from **1 to 5**. The application uses a **single login system** for all users, and features are **role-based**, meaning users can only access functions allowed for their role.
 
 ---
+Project Description
+
+The Store Rating Web Application is a full-stack platform that allows users to submit ratings for stores registered on the platform. Ratings range from 1 to 5 and are linked to individual users and stores. The application uses a single login system with role-based access control, so different types of users have different levels of access and functionality.
+
+Roles
+
+System Administrator: Can manage users and stores, view dashboards, and apply filters on listings.
+
+Normal User: Can sign up, log in, browse stores, submit ratings, and modify their ratings.
+
+Store Owner: Can log in, view ratings submitted for their store, and see average store ratings.
+
+Features
+
+Secure authentication using email and password, with hashed passwords and JWT tokens for login sessions.
+
+Authorization ensures users only access routes and features allowed for their role.
+
+Users can submit, update, and view ratings for stores.
+
+Admins can manage stores and users, view dashboards, and filter data.
+
+Responsive frontend built with React.js for easy navigation and interaction.
+
+Backend API built with Node.js and Express, connected to a MySQL database storing users, stores, and
+
+in 2 lines
+
+The Store Rating Web Application lets users submit and manage ratings (1–5) for registered stores with a single login system. Features are role-based, giving admins, normal users, and store owners different access and dashboards.
 
 ## **User Roles**
 
