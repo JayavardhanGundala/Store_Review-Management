@@ -42,7 +42,7 @@ const AdminDah = () => {
       setShowReset(false);
     } catch (err) {
       console.error(err);
-      setResetMessage(err.response?.data?.message || "Failed to update password");
+      setResetMessage(err.response?.data?.message || "Failed to update");
     }
   };
 
